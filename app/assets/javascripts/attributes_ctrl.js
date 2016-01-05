@@ -2,22 +2,24 @@
 
 
 (function() {
+
   "use strict";
+  angular.module("app").controller("SimpleDemoController", function($scope) {
 
-  angular.module("app").controller("listingCtrl", function($scope) {
+    $scope.models = {
+      selected: null,
+      lists: {"A": [], "B": []}
+    };
 
+    // Generate initial model
+    for (var i = 1; i <= 3; ++i) {
+      $scope.models.lists.A.push({label: "Item A" + i});
+      $scope.models.lists.B.push({label: "Item B" + i});
+    }
 
-    $scope.attributes = [
-      "address",
-      "price",
-      "sqft",
-      "cost_per_sqft",
-      "monthly_pmt",
-      "walk_score",
-      "amenities_score",
-      "building_score"
-    ];
-
-    window.$scope = $scope;
+    // Model to JSON for demo purpose
+    $scope.$watch('models', function(model) {
+      $scope.modelAsJson = angular.toJson(model, true);
+    }, true);
   });
 })();

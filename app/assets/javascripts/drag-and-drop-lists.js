@@ -532,4 +532,4 @@
    */
   .factory('dndDropEffectWorkaround', function(){ return {} });
 
-});
+})();
